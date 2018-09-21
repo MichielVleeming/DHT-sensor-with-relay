@@ -1,3 +1,5 @@
+
+
 #include <DHT.h>
 #include <DHT_U.h>
 
@@ -21,14 +23,14 @@ void loop() {
   float h = dht.readHumidity();
   float t = dht.readTemperature();
 
-  if(t > 20) {
+  if(t > 24) {
   digitalWrite(2, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(2, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);                       // wait for a second
+                      // wait for a second
+  }
+  if(t < 20) {
+    digitalWrite(2, LOW);
   }
   Serial.println(t);
   // Wait a few seconds between measurements. The AM2302 should not be read at a higher frequency of
   // about once every 2 seconds. So we add a 3 second delay to cover this.
-  delay(3000);
 }
